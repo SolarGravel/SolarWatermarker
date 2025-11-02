@@ -1,4 +1,5 @@
 from tkinter import Tk, ttk, filedialog, StringVar
+from watermarker import add_watermark
 
 root = Tk()
 root.title("Add Watermark")
@@ -11,7 +12,9 @@ def get_image_file(event=None):
 
 
 def get_watermark_folder(event=None):
-    return filedialog.asksaveasfilename(parent=root, defaultextension="*.png")
+    save_path: str = filedialog.asksaveasfilename(parent=root, initialfile=img_path.get())
+    
+    add_watermark(img_path.get(), save_path)
 
 
 mainframe = ttk.Frame(root, padding=(3, 3, 12, 12))
